@@ -1,6 +1,6 @@
 package wtf.matsem.bolt.ui.main
 
-import timber.log.Timber
+import floor
 import wtf.matsem.bolt.ui.base.BasePresenter
 
 class MainActivityPresenter : BasePresenter<MainView>() {
@@ -17,8 +17,8 @@ class MainActivityPresenter : BasePresenter<MainView>() {
 
 	fun onCzkTextChanged(text: String) {
 		if (text.isNotEmpty()) {
-			Timber.tag(TAG).d("CZK: ${text.toDouble()} -> BLT: ${czkToBolt(text.toDouble())}")
-			getView()?.setBoltText(czkToBolt(text.toDouble()).toString())
+			val bolt = czkToBolt(text.toDouble())
+			getView()?.setBoltText(bolt.floor(1).toString())
 		} else {
 			getView()?.setBoltText("")
 		}
@@ -26,8 +26,8 @@ class MainActivityPresenter : BasePresenter<MainView>() {
 
 	fun onBoltTextChanged(text: String) {
 		if (text.isNotEmpty()) {
-			Timber.tag(TAG).d("BLT: ${text.toDouble()} -> CZK: ${boltToCzk(text.toDouble())}")
-			getView()?.setCzkText(boltToCzk(text.toDouble()).toString())
+			val czk = boltToCzk(text.toDouble())
+			getView()?.setCzkText(czk.floor(1).toString())
 		} else {
 			getView()?.setCzkText("")
 		}
