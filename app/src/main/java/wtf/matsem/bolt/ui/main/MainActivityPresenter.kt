@@ -19,6 +19,8 @@ class MainActivityPresenter : BasePresenter<MainView>() {
 		if (text.isNotEmpty()) {
 			Timber.tag(TAG).d("CZK: ${text.toDouble()} -> BLT: ${czkToBolt(text.toDouble())}")
 			getView()?.setBoltText(czkToBolt(text.toDouble()).toString())
+		} else {
+			getView()?.setBoltText("")
 		}
 	}
 
@@ -26,6 +28,8 @@ class MainActivityPresenter : BasePresenter<MainView>() {
 		if (text.isNotEmpty()) {
 			Timber.tag(TAG).d("BLT: ${text.toDouble()} -> CZK: ${boltToCzk(text.toDouble())}")
 			getView()?.setCzkText(boltToCzk(text.toDouble()).toString())
+		} else {
+			getView()?.setCzkText("")
 		}
 	}
 
