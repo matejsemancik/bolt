@@ -3,33 +3,50 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context="wtf.matsem.bolt.MainActivity">
+	android:background="@color/brown"
+	tools:context="wtf.matsem.bolt.ui.main.MainActivity">
 
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:orientation="vertical">
+		android:orientation="horizontal"
+		android:paddingEnd="24dp"
+		android:paddingLeft="24dp"
+		android:paddingRight="24dp"
+		android:paddingStart="24dp">
 
-		<FrameLayout
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
+		<TextView
+			android:id="@+id/bolt_text"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
 			android:layout_weight="1"
-			android:background="@color/blue_aoi">
+			android:gravity="start"
+			android:textColor="@color/orange_goldfish"
+			android:textSize="40sp"
+			android:textStyle="bold"
+			tools:text="1.0 BLT" />
 
-			<TextView
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content" />
 
-		</FrameLayout>
-
-		<FrameLayout
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
+		<TextView
+			android:id="@+id/realcurrency_text"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
 			android:layout_weight="1"
-			android:background="@color/orange_goldfish">
-
-		</FrameLayout>
+			android:gravity="end"
+			android:textColor="@color/blue_aoi"
+			android:textSize="40sp"
+			android:textStyle="bold"
+			tools:text="48 CZK" />
 
 	</LinearLayout>
+
+	<ScrollView
+		android:id="@+id/scroll_view"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+	</ScrollView>
 
 </FrameLayout>
