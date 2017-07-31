@@ -1,3 +1,8 @@
 <resources>
 	<string name="app_name">bolt</string>
+
+	<string name="currency_bolt">BLT</string>
+	<string name="currency_czk">CZK</string>
+
+	<string name="edittext_hint">N/A</string>
 </resources>
