@@ -35,20 +35,37 @@
 				android:textSize="24sp"
 				android:textStyle="bold" />
 
-			<EditText
-				android:id="@+id/czk_edittext"
+			<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:background="@android:color/transparent"
-				android:gravity="start"
-				android:hint="@string/edittext_hint"
-				android:inputType="numberDecimal"
-				android:selectAllOnFocus="true"
-				android:textColor="@color/blue_aoi"
-				android:textCursorDrawable="@null"
-				android:textSize="48sp"
-				android:textStyle="bold"
-				tools:text="48.0" />
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@drawable/ic_payment"
+					android:tint="@color/blue_aoi" />
+
+				<EditText
+					android:includeFontPadding="false"
+					android:id="@+id/czk_edittext"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="16dp"
+					android:layout_weight="1"
+					android:background="@android:color/transparent"
+					android:gravity="start"
+					android:hint="@string/edittext_hint"
+					android:inputType="numberDecimal"
+					android:selectAllOnFocus="true"
+					android:textColor="@color/blue_aoi"
+					android:textCursorDrawable="@null"
+					android:textSize="48sp"
+					android:textStyle="bold"
+					tools:text="48.0" />
+
+			</LinearLayout>
 
 		</LinearLayout>
 
@@ -71,20 +88,36 @@
 				android:textSize="24sp"
 				android:textStyle="bold" />
 
-			<EditText
-				android:id="@+id/bolt_edittext"
+			<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:background="@android:color/transparent"
-				android:gravity="start"
-				android:hint="@string/edittext_hint"
-				android:inputType="numberDecimal"
-				android:selectAllOnFocus="true"
-				android:textColor="@color/orange_goldfish"
-				android:textCursorDrawable="@null"
-				android:textSize="48sp"
-				android:textStyle="bold"
-				tools:text="1.0" />
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@drawable/ic_bolt"
+					android:tint="@color/orange_goldfish" />
+
+				<EditText
+					android:includeFontPadding="false"
+					android:id="@+id/bolt_edittext"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="16dp"
+					android:layout_weight="1"
+					android:background="@android:color/transparent"
+					android:gravity="start"
+					android:hint="@string/edittext_hint"
+					android:inputType="numberDecimal"
+					android:selectAllOnFocus="true"
+					android:textColor="@color/orange_goldfish"
+					android:textCursorDrawable="@null"
+					android:textSize="48sp"
+					android:textStyle="bold"
+					tools:text="1.0" />
+			</LinearLayout>
 
 		</LinearLayout>
 
