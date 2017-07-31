@@ -15,30 +15,67 @@
 		android:paddingRight="24dp"
 		android:paddingStart="24dp">
 
-		<TextView
-			android:id="@+id/bolt_text"
-			android:layout_width="wrap_content"
+		<LinearLayout
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
 			android:layout_weight="1"
-			android:gravity="start"
-			android:textColor="@color/orange_goldfish"
-			android:textSize="40sp"
-			android:textStyle="bold"
-			tools:text="1.0 BLT" />
+			android:orientation="vertical">
 
+			<TextView
+				android:id="@+id/bolt_text"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="start"
+				android:textColor="@color/orange_goldfish"
+				android:textSize="40sp"
+				android:textStyle="bold"
+				tools:text="1.0 BLT" />
 
-		<TextView
-			android:id="@+id/realcurrency_text"
-			android:layout_width="wrap_content"
+			<TextView
+				android:id="@+id/bolt_velocity_text"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:ellipsize="end"
+				android:gravity="start"
+				android:maxLines="1"
+				android:textColor="@color/orange_goldfish"
+				android:textSize="14sp"
+				android:textStyle="bold"
+				tools:text="3432244433" />
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
 			android:layout_weight="1"
-			android:gravity="end"
-			android:textColor="@color/blue_aoi"
-			android:textSize="40sp"
-			android:textStyle="bold"
-			tools:text="48 CZK" />
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/realcurrency_text"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="end"
+				android:textColor="@color/blue_aoi"
+				android:textSize="40sp"
+				android:textStyle="bold"
+				tools:text="48 CZK" />
+
+			<TextView
+				android:id="@+id/realcurrency_velocity_text"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:ellipsize="end"
+				android:gravity="end"
+				android:maxLines="1"
+				android:textColor="@color/blue_aoi"
+				android:textSize="14sp"
+				android:textStyle="bold"
+				tools:text="123123" />
+
+		</LinearLayout>
 
 	</LinearLayout>
 
