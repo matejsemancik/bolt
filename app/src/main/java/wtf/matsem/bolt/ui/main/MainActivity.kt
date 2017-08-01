@@ -39,7 +39,9 @@ class MainActivity : BaseActivity(), MainView {
 		boltEditText.addTextChangedListener(object : SimpleTextWatcher() {
 			override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 				s?.let {
-					if (boltEditText.hasFocus()) presenter.onBoltTextChanged(s.toString())
+					if (boltEditText.hasFocus()) {
+						presenter.onBoltTextChanged(s.toString())
+					}
 				}
 			}
 		})
@@ -47,7 +49,9 @@ class MainActivity : BaseActivity(), MainView {
 		czkEditText.addTextChangedListener(object : SimpleTextWatcher() {
 			override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 				s?.let {
-					if (czkEditText.hasFocus()) presenter.onCzkTextChanged(s.toString())
+					if (czkEditText.hasFocus()) {
+						presenter.onCzkTextChanged(s.toString())
+					}
 				}
 			}
 		})
