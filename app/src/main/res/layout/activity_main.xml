@@ -3,7 +3,7 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="@color/brown"
+	android:background="@color/colorPrimaryDark"
 	android:fitsSystemWindows="true"
 	tools:context="wtf.matsem.bolt.ui.main.MainActivity">
 
@@ -31,7 +31,7 @@
 				android:gravity="start"
 				android:maxLines="1"
 				android:text="@string/currency_czk"
-				android:textColor="@color/blue_aoi"
+				android:textColor="@color/cyan"
 				android:textSize="24sp"
 				android:textStyle="bold" />
 
@@ -45,21 +45,21 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:src="@drawable/ic_payment"
-					android:tint="@color/blue_aoi" />
+					android:tint="@color/cyan" />
 
 				<EditText
-					android:includeFontPadding="false"
 					android:id="@+id/czk_edittext"
-					android:layout_width="0dp"
+					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginLeft="16dp"
-					android:layout_weight="1"
+					android:layout_marginStart="16dp"
 					android:background="@android:color/transparent"
 					android:gravity="start"
 					android:hint="@string/edittext_hint"
+					android:includeFontPadding="false"
 					android:inputType="numberDecimal"
 					android:selectAllOnFocus="true"
-					android:textColor="@color/blue_aoi"
+					android:textColor="@color/cyan"
+					android:textColorHint="@color/cyan_alpha"
 					android:textCursorDrawable="@null"
 					android:textSize="48sp"
 					android:textStyle="bold"
@@ -84,7 +84,7 @@
 				android:gravity="start"
 				android:maxLines="1"
 				android:text="@string/currency_bolt"
-				android:textColor="@color/orange_goldfish"
+				android:textColor="@color/pink_carmine"
 				android:textSize="24sp"
 				android:textStyle="bold" />
 
@@ -98,21 +98,21 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:src="@drawable/ic_bolt"
-					android:tint="@color/orange_goldfish" />
+					android:tint="@color/pink_carmine" />
 
 				<EditText
-					android:includeFontPadding="false"
 					android:id="@+id/bolt_edittext"
-					android:layout_width="0dp"
+					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginLeft="16dp"
-					android:layout_weight="1"
+					android:layout_marginStart="16dp"
 					android:background="@android:color/transparent"
 					android:gravity="start"
 					android:hint="@string/edittext_hint"
+					android:includeFontPadding="false"
 					android:inputType="numberDecimal"
 					android:selectAllOnFocus="true"
-					android:textColor="@color/orange_goldfish"
+					android:textColor="@color/pink_carmine"
+					android:textColorHint="@color/pink_carmine_alpha"
 					android:textCursorDrawable="@null"
 					android:textSize="48sp"
 					android:textStyle="bold"
