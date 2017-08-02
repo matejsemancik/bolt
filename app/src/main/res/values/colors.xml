@@ -8,9 +8,9 @@
 	<color name="black_jet">#FF312F2F</color>
 
 	<color name="pink_carmine">#FFEF626C</color>
-	<color name="pink_carmine_alpha">#77EF626C</color>
+	<color name="pink_carmine_alpha">#55EF626C</color>
 
 	<color name="cyan">#FF84DCCF</color>
-	<color name="cyan_alpha">#7784DCCF</color>
+	<color name="cyan_alpha">#5584DCCF</color>
 
 </resources>
