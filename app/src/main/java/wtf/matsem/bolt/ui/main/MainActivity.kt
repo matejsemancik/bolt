@@ -1,8 +1,11 @@
 package wtf.matsem.bolt.ui.main
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.EditText
 import butterknife.BindView
+import butterknife.OnClick
 import wtf.matsem.bolt.R
 import wtf.matsem.bolt.tools.ui.SimpleTextWatcher
 import wtf.matsem.bolt.ui.base.BaseActivity
@@ -56,6 +59,18 @@ class MainActivity : BaseActivity(), MainView {
 			}
 		})
 	}
+
+	// region UI evts
+
+	@OnClick(R.id.top_up_button)
+	fun onTopUpClick() {
+		val url: String = "https://letitroll.pay.intellifest.com/login"
+		val intent: Intent = Intent(Intent.ACTION_VIEW)
+		intent.setData(Uri.parse(url))
+		startActivity(intent)
+	}
+
+	// endregion
 
 	// region View impl
 
