@@ -24,6 +24,10 @@ class MainActivityPresenter : BasePresenter<MainView>() {
 
 	// CZK Input
 	fun onCzkTextChanged(text: String) {
+		if (text.startsWith(".")) {
+			return
+		}
+
 		var matcher: Matcher = anyCharactersPattern.matcher(text)
 		if (matcher.find()) {
 			return
@@ -43,6 +47,10 @@ class MainActivityPresenter : BasePresenter<MainView>() {
 
 	// BOLT input
 	fun onBoltTextChanged(text: String) {
+		if (text.startsWith(".")) {
+			return
+		}
+
 		var matcher: Matcher = anyCharactersPattern.matcher(text)
 		if (matcher.find()) {
 			return
