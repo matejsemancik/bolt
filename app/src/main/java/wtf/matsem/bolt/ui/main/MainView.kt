@@ -4,9 +4,9 @@ import wtf.matsem.bolt.ui.base.BaseMvpView
 
 interface MainView : BaseMvpView {
 
-	fun setBoltText(text: String)
+    fun setBoltText(text: String)
 
-	fun setCzkText(text: String)
+    fun setCzkText(text: String)
 }
 
 

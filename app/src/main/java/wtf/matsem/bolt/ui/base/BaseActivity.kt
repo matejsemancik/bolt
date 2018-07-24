@@ -7,13 +7,14 @@ import butterknife.ButterKnife
 
 abstract class BaseActivity : AppCompatActivity() {
 
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-		setContentView(getContentView())
-		ButterKnife.bind(this)
-	}
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(getContentView())
+        ButterKnife.bind(this)
+    }
 
-	@LayoutRes abstract fun getContentView(): Int
+    @LayoutRes
+    abstract fun getContentView(): Int
 }
 
 
