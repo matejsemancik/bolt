@@ -11,15 +11,15 @@ class MainActivityPresenter : BasePresenter<MainView>() {
     val anyCharactersPattern: Pattern = Pattern.compile("[a-zA-Z]")
 
     companion object {
-        val BLT_RATE: Double = 48.0
+        val BLT_RATE: Double = 50.0
         val LIMIT_TEXT_LEN: Int = 8
     }
 
     override fun attachView(view: MainView) {
         super.attachView(view)
 
-        getView()?.setBoltText("1.0")
-        getView()?.setCzkText("48.0")
+        getView()?.setBoltText(1.toDouble().toString())
+        getView()?.setCzkText(BLT_RATE.toString())
     }
 
     // CZK Input
