@@ -3,9 +3,10 @@ package wtf.matsem.bolt.ui.main
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.EditText
-import butterknife.BindView
-import butterknife.OnClick
+import android.text.InputType
+import android.widget.Toast
+import com.afollestad.materialdialogs.MaterialDialog
+import kotlinx.android.synthetic.main.activity_main.*
 import wtf.matsem.bolt.R
 import wtf.matsem.bolt.tools.ui.SimpleTextWatcher
 import wtf.matsem.bolt.ui.base.BaseActivity
@@ -13,74 +14,92 @@ import wtf.matsem.bolt.ui.base.BaseActivity
 
 class MainActivity : BaseActivity(), MainView {
 
-	@BindView(R.id.bolt_edittext) lateinit var boltEditText: EditText
-	@BindView(R.id.czk_edittext) lateinit var czkEditText: EditText
+    val presenter: MainActivityPresenter by lazy {
+        MainActivityPresenter()
+    }
 
-	val presenter: MainActivityPresenter by lazy {
-		MainActivityPresenter()
-	}
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        presenter.attachView(this)
 
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-		presenter.attachView(this)
+        setupListeners()
 
-		setupListeners()
+        bolt_edittext.requestFocus()
+    }
 
-		boltEditText.requestFocus()
-	}
+    override fun onDestroy() {
+        presenter.detachView()
+        super.onDestroy()
+    }
 
-	override fun onDestroy() {
-		presenter.detachView()
-		super.onDestroy()
-	}
+    override fun getContentView(): Int {
+        return R.layout.activity_main
+    }
 
-	override fun getContentView(): Int {
-		return R.layout.activity_main
-	}
+    private fun setupListeners() {
+        bolt_edittext.addTextChangedListener(object : SimpleTextWatcher() {
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                s?.let {
+                    if (bolt_edittext.hasFocus()) {
+                        presenter.onBoltTextChanged(s.toString())
+                    }
+                }
+            }
+        })
 
-	private fun setupListeners() {
-		boltEditText.addTextChangedListener(object : SimpleTextWatcher() {
-			override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-				s?.let {
-					if (boltEditText.hasFocus()) {
-						presenter.onBoltTextChanged(s.toString())
-					}
-				}
-			}
-		})
+        czk_edittext.addTextChangedListener(object : SimpleTextWatcher() {
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                s?.let {
+                    if (czk_edittext.hasFocus()) {
+                        presenter.onCzkTextChanged(s.toString())
+                    }
+                }
+            }
+        })
 
-		czkEditText.addTextChangedListener(object : SimpleTextWatcher() {
-			override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-				s?.let {
-					if (czkEditText.hasFocus()) {
-						presenter.onCzkTextChanged(s.toString())
-					}
-				}
-			}
-		})
-	}
+        top_up_button.setOnClickListener {
+            val url = "https://letitroll.pay.intellifest.com/login"
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
+        }
 
-	// region UI evts
+        bolt_rate_button.setOnClickListener {
+            presenter.onRateChangeClick()
+        }
+    }
 
-	@OnClick(R.id.top_up_button)
-	fun onTopUpClick() {
-		val url: String = "https://letitroll.pay.intellifest.com/login"
-		val intent: Intent = Intent(Intent.ACTION_VIEW)
-		intent.setData(Uri.parse(url))
-		startActivity(intent)
-	}
+    // endregion
 
-	// endregion
+    // region View impl
 
-	// region View impl
+    override fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
 
-	override fun setCzkText(text: String) {
-		czkEditText.setText(text)
-	}
+    override fun setCzkText(text: String) {
+        czk_edittext.setText(text)
+    }
 
-	override fun setBoltText(text: String) {
-		boltEditText.setText(text)
-	}
+    override fun setBoltText(text: String) {
+        bolt_edittext.setText(text)
+    }
 
-	// endregion
+    override fun showBoltRateDialog(currentRate: Double) {
+        MaterialDialog.Builder(this)
+                .title(resources.getString(R.string.bolt_dialog_title))
+                .content(resources.getString(R.string.bolt_dialog_content))
+                .inputType(InputType.TYPE_NUMBER_FLAG_DECIMAL)
+                .input(resources.getString(R.string.bolt_dialog_hint), currentRate.toString()) { dialog, input ->
+                    presenter.onRateChanged(input.toString())
+                    presenter.onBoltTextChanged(bolt_edittext.text.toString())
+                }
+                .show()
+    }
+
+    override fun setBoltRateText(boltRate: Double) {
+        bolt_rate_button.text = resources.getString(R.string.bolt_rate_text, boltRate)
+    }
+
+    // endregion
 }
