@@ -7,6 +7,12 @@ interface MainView : BaseMvpView {
     fun setBoltText(text: String)
 
     fun setCzkText(text: String)
+
+    fun setBoltRateText(boltRate: Double)
+
+    fun showBoltRateDialog(currentRate: Double)
+
+    fun showToast(message: String)
 }
 
 

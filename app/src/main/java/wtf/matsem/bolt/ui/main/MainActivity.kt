@@ -3,6 +3,9 @@ package wtf.matsem.bolt.ui.main
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.InputType
+import android.widget.Toast
+import com.afollestad.materialdialogs.MaterialDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import wtf.matsem.bolt.R
 import wtf.matsem.bolt.tools.ui.SimpleTextWatcher
@@ -60,11 +63,19 @@ class MainActivity : BaseActivity(), MainView {
             intent.data = Uri.parse(url)
             startActivity(intent)
         }
+
+        bolt_rate_button.setOnClickListener {
+            presenter.onRateChangeClick()
+        }
     }
 
     // endregion
 
     // region View impl
+
+    override fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
 
     override fun setCzkText(text: String) {
         czk_edittext.setText(text)
@@ -72,6 +83,22 @@ class MainActivity : BaseActivity(), MainView {
 
     override fun setBoltText(text: String) {
         bolt_edittext.setText(text)
+    }
+
+    override fun showBoltRateDialog(currentRate: Double) {
+        MaterialDialog.Builder(this)
+                .title(resources.getString(R.string.bolt_dialog_title))
+                .content(resources.getString(R.string.bolt_dialog_content))
+                .inputType(InputType.TYPE_NUMBER_FLAG_DECIMAL)
+                .input(resources.getString(R.string.bolt_dialog_hint), currentRate.toString()) { dialog, input ->
+                    presenter.onRateChanged(input.toString())
+                    presenter.onBoltTextChanged(bolt_edittext.text.toString())
+                }
+                .show()
+    }
+
+    override fun setBoltRateText(boltRate: Double) {
+        bolt_rate_button.text = resources.getString(R.string.bolt_rate_text, boltRate)
     }
 
     // endregion

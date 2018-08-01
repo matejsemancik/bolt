@@ -7,11 +7,10 @@ import java.util.regex.Pattern
 
 class MainActivityPresenter : BasePresenter<MainView>() {
 
-    val TAG: String = this.javaClass.simpleName
     val anyCharactersPattern: Pattern = Pattern.compile("[a-zA-Z]")
+    var boltRate: Double = 50.0
 
     companion object {
-        val BLT_RATE: Double = 50.0
         val LIMIT_TEXT_LEN: Int = 8
     }
 
@@ -19,7 +18,8 @@ class MainActivityPresenter : BasePresenter<MainView>() {
         super.attachView(view)
 
         getView()?.setBoltText(1.toDouble().toString())
-        getView()?.setCzkText(BLT_RATE.toString())
+        getView()?.setCzkText(boltRate.toString())
+        getView()?.setBoltRateText(boltRate)
     }
 
     // CZK Input
@@ -68,7 +68,21 @@ class MainActivityPresenter : BasePresenter<MainView>() {
         }
     }
 
-    fun czkToBolt(czk: Double): Double = czk / BLT_RATE
+    fun onRateChangeClick() {
+        getView()?.showBoltRateDialog(boltRate)
+    }
 
-    fun boltToCzk(bolt: Double): Double = bolt * BLT_RATE
+    fun onRateChanged(newRateString: String) {
+        try {
+            val newRate = newRateString.toDouble()
+            boltRate = newRate
+            getView()?.setBoltRateText(boltRate)
+        } catch (e: NumberFormatException) {
+            getView()?.showToast("Invalid input")
+        }
+    }
+
+    fun czkToBolt(czk: Double): Double = czk / boltRate
+
+    fun boltToCzk(bolt: Double): Double = bolt * boltRate
 }

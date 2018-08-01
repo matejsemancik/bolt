@@ -6,4 +6,9 @@
 
 	<string name="edittext_hint">N/A</string>
 	<string name="top_up">Top Up link</string>
+	<string name="bolt_rate_text">1 BLT = %.1f CZK</string>
+
+	<string name="bolt_dialog_title">Change rate</string>
+	<string name="bolt_dialog_content">1 BLT = </string>
+	<string name="bolt_dialog_hint">Enter the rate</string>
 </resources>
