@@ -3,18 +3,13 @@ package wtf.matsem.bolt.ui.main
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.EditText
-import butterknife.BindView
-import butterknife.OnClick
+import kotlinx.android.synthetic.main.activity_main.*
 import wtf.matsem.bolt.R
 import wtf.matsem.bolt.tools.ui.SimpleTextWatcher
 import wtf.matsem.bolt.ui.base.BaseActivity
 
 
 class MainActivity : BaseActivity(), MainView {
-
-    @BindView(R.id.bolt_edittext) lateinit var boltEditText: EditText
-    @BindView(R.id.czk_edittext) lateinit var czkEditText: EditText
 
     val presenter: MainActivityPresenter by lazy {
         MainActivityPresenter()
@@ -26,7 +21,7 @@ class MainActivity : BaseActivity(), MainView {
 
         setupListeners()
 
-        boltEditText.requestFocus()
+        bolt_edittext.requestFocus()
     }
 
     override fun onDestroy() {
@@ -39,35 +34,32 @@ class MainActivity : BaseActivity(), MainView {
     }
 
     private fun setupListeners() {
-        boltEditText.addTextChangedListener(object : SimpleTextWatcher() {
+        bolt_edittext.addTextChangedListener(object : SimpleTextWatcher() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 s?.let {
-                    if (boltEditText.hasFocus()) {
+                    if (bolt_edittext.hasFocus()) {
                         presenter.onBoltTextChanged(s.toString())
                     }
                 }
             }
         })
 
-        czkEditText.addTextChangedListener(object : SimpleTextWatcher() {
+        czk_edittext.addTextChangedListener(object : SimpleTextWatcher() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 s?.let {
-                    if (czkEditText.hasFocus()) {
+                    if (czk_edittext.hasFocus()) {
                         presenter.onCzkTextChanged(s.toString())
                     }
                 }
             }
         })
-    }
 
-    // region UI evts
-
-    @OnClick(R.id.top_up_button)
-    fun onTopUpClick() {
-        val url: String = "https://letitroll.pay.intellifest.com/login"
-        val intent: Intent = Intent(Intent.ACTION_VIEW)
-        intent.setData(Uri.parse(url))
-        startActivity(intent)
+        top_up_button.setOnClickListener {
+            val url = "https://letitroll.pay.intellifest.com/login"
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
+        }
     }
 
     // endregion
@@ -75,11 +67,11 @@ class MainActivity : BaseActivity(), MainView {
     // region View impl
 
     override fun setCzkText(text: String) {
-        czkEditText.setText(text)
+        czk_edittext.setText(text)
     }
 
     override fun setBoltText(text: String) {
-        boltEditText.setText(text)
+        bolt_edittext.setText(text)
     }
 
     // endregion
